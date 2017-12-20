@@ -28,3 +28,6 @@
 [Python]: <https://www.python.org/downloads/>
 [VirtualEnv]: <https://virtualenv.pypa.io/en/stable/installation/>
 [Django]: <https://www.djangoproject.com/download/>
+
+*[Changes based on Testing Git learning phase]
+*[Donot follow this instruction,its useless]
