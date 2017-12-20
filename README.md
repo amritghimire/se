@@ -1,4 +1,6 @@
 # Software Engineering Project
+
+[![Build Status](https://travis-ci.com/amritghimire/se.svg?token=g2nJ3eUfEWGpEUycZyGP&branch=testing)](https://travis-ci.com/amritghimire/se)
 ## Recommendation and feedback system
 
 ### Dependencies
