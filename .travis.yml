@@ -14,11 +14,9 @@ branches:
   except:
     - testing
 
-before_script:
-  - psql -c 'create database rafs;' -U postgres
-
 install:
   - pip install -r requirements.txt
+  - psql -c 'create database rafs;' -U postgres
   - python manage.py migrate
 script:
   - python manage.py test
