@@ -1,11 +1,9 @@
-from . import base
+from .base import *
+
+from .production import *
 
 try:
-    from . import production
-except ImportError:
+    from .local import *
+except:
     pass
 
-try:
-    from . import local
-except ImportError:
-    pass
