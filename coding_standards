@@ -1,0 +1,7 @@
+Avoid abbreviating variable names.
+Write out your function argument names.
+Document your classes and methods.
+Comment your code.
+Refactor repeated lines of code into reusable functions or methods.
+Keep functions and methods short. A good rule of thumb is that scrolling should not be necessary to read an entire function or method.
+
