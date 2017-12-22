@@ -1,7 +1,32 @@
-Avoid abbreviating variable names.
-Write out your function argument names.
-Document your classes and methods.
-Comment your code.
-Refactor repeated lines of code into reusable functions or methods.
-Keep functions and methods short. A good rule of thumb is that scrolling should not be necessary to read an entire function or method.
+# Avoid abbreviating variable names.
+# Write out your function argument names.
+# Document your classes and methods.
+# Comment your code.
+# Refactor repeated lines of code into reusable functions or methods.
+# Keep functions and methods short. A good rule of thumb is that scrolling should not be necessary to read an entire function or method.
+
+#Use flake8 before pushing to git
+
+flake8 --exclude=venv,.git,__pycache__
+
+#  No more then 79 characters in one line
+# import order:
+1. Standard library imports
+
+2. Related third-party imports
+
+3. Local application or library specific imports
+
+# Example: 
+
+# Stdlib imports
+from math import sqrt
+from os.path import abspath
+# Core Django imports
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
+# Third-party app imports
+from django_extensions.db.models import TimeStampedModel
+# Imports from your apps
+from splits.models import BananaSplit
 

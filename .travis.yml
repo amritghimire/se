@@ -1,3 +1,5 @@
+services:
+  - postgresql
 language: python
 python:
   - "3.4"
@@ -14,6 +16,7 @@ branches:
 
 install:
   - pip install -r requirements.txt
+  - psql -c 'create database rafs;' -U postgres
   - python manage.py migrate
 script:
   - python manage.py test
