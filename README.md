@@ -12,6 +12,7 @@
  
 * Install [Python]3.6 if not installed already
 * Clone this repo to your working directory by `git clone https://github.com/amritghimire/se.git`
+* Type `git update-index --skip-worktree conf/database.json` to skip your further changes to database config.
 * This will create a directory *se*. Go to this directory by `cd se`
 * Install [VirtualEnv] and (`sudo apt install virtualenv`) and _pip3_ if you don't have.
 * Install [PostgreSQL] by downloading it and setup a database `rafs` with you as **owner** 
