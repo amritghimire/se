@@ -1,0 +1,23 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing production unit</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+</head>
+<body>
+<div class="container">
+    <ul class="row list-group">
+    {% for file in files %}
+    <li class="list-group-item"><a href="{% url 'bridge:template' file %}">{{ files }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+</div>
+
+
+</body>
+</html>
