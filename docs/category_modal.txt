@@ -1,0 +1,6 @@
+string : name
+string : slug ( for the url )
+string : summary 
+string : description 
+int    : id 
+file   : image_for_detail
