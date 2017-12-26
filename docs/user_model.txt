@@ -1,0 +1,9 @@
+string : username
+string : password
+string : email
+datetime: user_created
+string : token ( For storing logins)
+string : First Name
+string : Last name
+datetime : DOB
+boolean : email_verified
