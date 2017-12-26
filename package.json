@@ -73,6 +73,7 @@
     "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
+    "file-loader": "^1.1.6",
     "uglify-js": "^3.3.2"
   }
 }
