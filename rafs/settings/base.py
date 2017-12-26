@@ -26,7 +26,7 @@ SECRET_KEY = '!%#h048u-i8^*&!@d2%)-un-z%&q*9*^)o#h$m10ni9=z3j326'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 DEBUG = True
 db_json=os.path.join(os.path.join(BASE_DIR,"conf"),"database.json")
 
