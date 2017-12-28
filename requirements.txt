@@ -1,8 +1,9 @@
 brotlipy==0.7.0
 cffi==1.11.2
-Django==2.0
-flake8==3.5.0
 dj-database-url==0.4.2
+Django==2.0
+django-crispy-forms==1.7.0
+flake8==3.5.0
 gunicorn==19.7.1
 mccabe==0.6.1
 psycopg2==2.7.3.2
@@ -11,3 +12,4 @@ pycparser==2.18
 pyflakes==1.6.0
 pytz==2017.3
 whitenoise==3.3.1
+django-allauth==0.34.0
