@@ -154,6 +154,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+<<<<<<< HEAD
 
 WEBPACK_LOADER = {
     'DEFAULT': {
@@ -161,5 +162,6 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
-
+=======
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
+>>>>>>> login

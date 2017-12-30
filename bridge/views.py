@@ -9,11 +9,11 @@ from os.path import isfile, join
 def home(request):
     directory_to_scan = os.path.join(settings.BASE_DIR, "templates", "bridge")
     onlyfiles = [f for f in os.listdir(directory_to_scan) if isfile(join(directory_to_scan, f))]
-    onlyfiles.remove("base.html")
+    onlyfiles.remove("home.html")
     context = {
         "files": onlyfiles
     }
-    return render(request, 'bridge/base.html', context=context)
+    return render(request, 'bridge/home.html', context=context)
 
 
 def template(request, template_name="base"):

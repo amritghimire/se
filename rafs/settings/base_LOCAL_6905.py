@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import json
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -27,23 +28,20 @@ SECRET_KEY = '!%#h048u-i8^*&!@d2%)-un-z%&q*9*^)o#h$m10ni9=z3j326'
 
 ALLOWED_HOSTS = ['*']
 DEBUG = True
-db_json = os.path.join(os.path.join(BASE_DIR, "conf"), "database.json")
+db_json=os.path.join(os.path.join(BASE_DIR,"conf"),"database.json")
 
-with open(db_json) as f:
+with open (db_json) as f:
     secrets = json.loads(f.read())
-
 
 def get_secret(setting, secrets=secrets):
     try:
         return secrets[setting]
-    except KeyError:
+    except KeyError: 
         error_msg = 'Set the {0} environment variable'.format(setting)
         raise ImproperlyConfigured(error_msg)
 
-
 # Application definition
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_REDIRECT_URL = 'bridge:index'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -54,12 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'webpack_loader',
     'rafs',
-    'bridge',
-    'crispy_forms',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    'bridge'
 ]
 
 MIDDLEWARE = [
@@ -78,7 +71,7 @@ ROOT_URLCONF = 'rafs.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR + "/templates/"],
+        'DIRS': [BASE_DIR+"/templates/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,7 +84,9 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'rafs.wsgi.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -106,7 +101,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config(default="postgres://postgres:@localhost/rafs")
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -129,12 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-)
-
-SITE_ID = 1
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
@@ -149,6 +138,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -161,5 +151,3 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
-
-ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
