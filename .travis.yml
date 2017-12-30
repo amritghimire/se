@@ -11,7 +11,5 @@ install:
   - pip install -r requirements.txt
   - psql -c 'create database rafs;' -U postgres
   - python manage.py migrate
-  - npm install
-  - ./node_modules/.bin/webpack --config webpack.config.js
 script:
   - python manage.py test
