@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from tastypie.api import Api
+from userProfile.api.resources import UserModelResource
+
+v1_api=Api(api_name='v1')
+v1_api.register(UserModelResource())
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/',include(v1_api.urls)),
     path('login/', auth_views.login, name='login'),
     path('accounts/', include('allauth.urls')),
     path('', include('bridge.urls', namespace="bridge")),

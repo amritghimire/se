@@ -52,8 +52,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'tastypie',
     'webpack_loader',
     'rafs',
+    'userProfile',
     'bridge',
     'crispy_forms',
     'django.contrib.sites',
@@ -97,16 +99,8 @@ WSGI_APPLICATION = 'rafs.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rafs',
-        'USER': get_secret('user'),
-        'PASSWORD': get_secret('secret'),
-    }
-}
+DATABASES = {'default': dj_database_url.config(default="postgres://postgres:@localhost/rafs")}
 
-DATABASES['default'] = dj_database_url.config(default="postgres://postgres:@localhost/rafs")
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -163,3 +157,4 @@ WEBPACK_LOADER = {
 }
 
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
+AUTH_USER_MODEL = 'userProfile.UserProfile'
