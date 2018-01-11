@@ -10,20 +10,20 @@
  
  ### Installation Instruction
  
-* Install [Python]3.6 if not installed already
+* Install [Python]3 if not installed already
 * Clone this repo to your working directory by `git clone https://github.com/amritghimire/se.git`
-* Type `git update-index --assume-unchanged conf/database.json` to skip your further changes to database config.
 * This will create a directory *se*. Go to this directory by `cd se`
+* Type `git update-index --assume-unchanged conf/database.json` to skip your further changes to database config.
 * Install [VirtualEnv] and (`sudo apt install virtualenv`) and _pip3_ if you don't have.
 * Install [PostgreSQL] by downloading it and setup a database `rafs` with you as **owner** 
-* If you set your postgres user anything except **postgres** and password empty, change the value in rafs/settings/conf/database.json 	with following content.
+* If you set your postgres user anything except **postgres** and password empty, change the value in conf/database.json 	with following content.
   ```json
    {
 	 "user": "<user>",
 	 "secret": "<password>"
     }
   ```
-* Make a [VirtualEnv] by ` virtualenv --python=python3.6 venv`
+* Make a [VirtualEnv] by ` virtualenv --python=python3 venv`
 * Activate _virtual environment_ by `source venv/bin/activate` or `venv\Scripts\activate`
 * Then, install all dependencies with `pip3 install -r requirements.txt`.
 * You are good to go now.
@@ -40,5 +40,3 @@
 [VirtualEnv]: <https://virtualenv.pypa.io/en/stable/installation/>
 [Django]: <https://www.djangoproject.com/download/>
 
-*[Changes based on Testing Git learning phase]
-*[Donot follow this instruction,its useless]
