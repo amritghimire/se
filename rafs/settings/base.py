@@ -98,8 +98,20 @@ WSGI_APPLICATION = 'rafs.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+s = os.environ.get("DATABASE_URL")
 
-DATABASES = {'default': dj_database_url.config(default="postgres://postgres:@localhost/rafs")}
+if s:
+    DATABASES = {'default': dj_database_url.config(default="postgres://postgres:@localhost/rafs")}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'rafs',
+            'USER': get_secret('user'),
+            'PASSWORD': get_secret('secret'),
+        },
+    }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
