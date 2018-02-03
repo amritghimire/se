@@ -12,6 +12,7 @@ services:
 
 variables:
   POSTGRES_DB: rafs
+  DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
@@ -26,7 +27,6 @@ before_script:
   # Uncomment next line if your Django app needs a JS runtime:
   # - apt-get update -q && apt-get install nodejs -yqq
   - pip install -r requirements.txt
-  - psql -c 'create database rafs;' -U postgres
   - python manage.py migrate
 
 # To get Django tests to work you may need to create a settings file using
