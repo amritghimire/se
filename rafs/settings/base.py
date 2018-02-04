@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'webpack_loader',
+    'rest_framework',
     'rafs',
     'userProfile',
     'bridge',
@@ -171,5 +172,10 @@ WEBPACK_LOADER = {
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
 AUTH_USER_MODEL = 'userProfile.UserProfile'
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES'
+    : (
+        'rest_framework.permissions.IsAdminUser',
+    ),
+}
 

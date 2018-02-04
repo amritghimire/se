@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', auth_views.login, name='login'),
     path('accounts/', include('allauth.urls')),
+    path('api/v1/', include('bridge.apiv1_urls', namespace='api')),
     path('', include('bridge.urls', namespace="bridge")),
 ]

@@ -5,7 +5,7 @@ import uuid as uuid_lib
 
 class UserProfile(AbstractUser):
     dob = models.DateField(null=True, blank=True)
-    uuid = models.UUIDField(
+    uuid = models.UUIDField(  # Used by the API to look up the record
         db_index=True,
         default=uuid_lib.uuid4,
         editable=False
