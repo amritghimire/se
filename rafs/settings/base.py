@@ -15,6 +15,8 @@ import json
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.core.exceptions import ImproperlyConfigured
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
@@ -52,7 +54,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'tastypie',
     'webpack_loader',
     'rafs',
     'userProfile',
@@ -112,7 +113,6 @@ else:
         },
     }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -170,3 +170,6 @@ WEBPACK_LOADER = {
 
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
 AUTH_USER_MODEL = 'userProfile.UserProfile'
+
+
+
