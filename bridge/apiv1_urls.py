@@ -11,17 +11,17 @@ app_name = "userProfile"
 urlpatterns = [
     # {% url 'api:UserProfiles' %}
     path(
-        r'user/',
+        r'user',
         view=userprofile_views.UserProfileListCreateAPIView.as_view(),
         name='user'
     ),
     # {% url 'api:UserProfiles' UserProfile.uuid %}
     path(
-        r'^user/(?P<uuid>[-\w]+)/$',
+        r'user/<uuid>/',
         view=userprofile_views.UserProfileRetrieveUpdateDestroyAPIView.as_view(),
         name='user'
     ),
     path(
-        '/', userprofile_views.home, name='main'
+        '', userprofile_views.home, name='main'
     )
 ]

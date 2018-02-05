@@ -63,7 +63,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -179,3 +178,9 @@ REST_FRAMEWORK = {
     ),
 }
 
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.yandex.com'
+EMAIL_HOST_USER = 'rafs@amritghimire.com'
+EMAIL_HOST_PASSWORD = 'sevenseven'
+EMAIL_PORT = 465
+DEFAULT_FROM_EMAIL = 'Amrit Ghimire <rafs@amritghimire.com>'
