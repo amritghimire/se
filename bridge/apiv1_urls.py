@@ -15,6 +15,12 @@ urlpatterns = [
         view=userprofile_views.UserProfileListCreateAPIView.as_view(),
         name='user'
     ),
+    # {% url 'api:login' %}
+    path(
+        r'login',
+        view=userprofile_views.Login.as_view(),
+        name='login'
+    ),
     # {% url 'api:UserProfiles' UserProfile.uuid %}
     path(
         r'user/<uuid>/',
