@@ -66,11 +66,16 @@ class Login(APIView):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user=user)
-            if remember != "remember":
+            if not remember:
                 request.session.set_expiry(0)
             return Response(UserProfileSerializer(user).data)
         else:
-            return Response({"error": "Username or password incorrect."}, status=status.HTTP_400_BAD_REQUEST)
+            error={"error":"Please check your login info again."}
+            if not UserProfile.objects.filter(username=username).exists():
+                error['username']="The username is not registered yet.Try signing up?"
+            else:
+                error['password']="That password doesn’t match. Check CAPS lock and Try again? "
+            return Response(error, status=status.HTTP_400_BAD_REQUEST)
 
 
 class Home:

@@ -187,3 +187,4 @@ EMAIL_HOST_USER = 'rafs@amritghimire.com'
 EMAIL_HOST_PASSWORD = 'sevenseven'
 EMAIL_PORT = 465
 DEFAULT_FROM_EMAIL = 'Amrit Ghimire <rafs@amritghimire.com>'
+SOCIAL_AUTH_SESSION_EXPIRATION=False
