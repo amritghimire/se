@@ -1,6 +1,8 @@
+from django.contrib.auth import login
 from django.contrib.auth.models import AnonymousUser
 from rest_framework import status
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.compat import authenticate
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.generics import (
     ListCreateAPIView,
@@ -44,7 +46,7 @@ class Login(APIView):
         - csrfmiddlewaretoken //for cross site verification
         - remember_me         // checkbox to remember the user
     It will return
-        - error message with status code 406 if failed to login
+        - error message with status code 400 if failed to login
         - user instance with 200 status code if logged in
     """
     permission_classes = (AllowAny,)
@@ -57,36 +59,18 @@ class Login(APIView):
                             status=status.HTTP_401_UNAUTHORIZED)
         return Response(UserProfileSerializer(user).data)
 
-
-@api_view(['GET', 'POST'])
-@permission_classes((AllowAny,))
-def login(request):
-    """
-    Login api
-    GET request to login will return
-        - user instance with 200 status code if logged in
-        - error detail with 401 status code if not logged in
-    POST request to login will need
-        - username            //username of user
-        - password            //password of user
-        - csrfmiddlewaretoken //for cross site verification
-        - remember_me         // checkbox to remember the user
-    It will return
-        - error message with status code 406 if failed to login
-        - user instance with 200 status code if logged in
-    :param request:
-    :return:
-    """
-    if request.method == 'GET':
-        user = request.user
-        auth = request.auth
-        if isinstance(user, AnonymousUser):
-            return Response({"detail": "Authentication credentials were not provided."},
-                            status=status.HTTP_401_UNAUTHORIZED)
-        return Response(UserProfileSerializer(user).data)
-    elif request.method == 'POST':
-        pass
-    pass
+    def post(self, request):
+        username = request.data['username']
+        password = request.data['password']
+        remember = request.data['remember_me']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user=user)
+            if remember != "remember":
+                request.session.set_expiry(0)
+            return Response(UserProfileSerializer(user).data)
+        else:
+            return Response({"error": "Username or password incorrect."}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class Home:

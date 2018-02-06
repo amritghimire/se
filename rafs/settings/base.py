@@ -179,6 +179,8 @@ REST_FRAMEWORK = {
     ),
 }
 
+SESSION_COOKIE_AGE = 60 * 60 * 30 * 24
+
 EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.yandex.com'
 EMAIL_HOST_USER = 'rafs@amritghimire.com'

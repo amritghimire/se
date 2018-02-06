@@ -8,17 +8,17 @@
             crossorigin="anonymous"></script>
     <div id="demo">
     </div>
-        <h2>The XMLHttpRequest Object</h2>
+    <h2>The XMLHttpRequest Object</h2>
 
-        <button type="button"
-                onclick="call_ajax()">Change Content
-        </button>
+    <button type="button"
+            onclick="call_ajax()">Change Content
+    </button>
     </div>
 
     <script>
         function call_ajax() {
             let url = $('input[name=apiStarter]').val();
-            url = url + "user?format=json";
+            url = url + "login?format=json";
             loadDoc(url)
         }
 
@@ -28,12 +28,19 @@
             console.log(url);
             $.ajax({
                 url: url,
+                data: {
+                    csrfmiddlewaretoken: csrftoken,
+                    username: "amrit",
+                    password: "sevenseven",
+                    remember_me: "remember",
+                },
                 xhrFields: {
                     withCredentials: true
                 },
                 success: function (data) {
                     console.log(data);
-                }
+                },
+                type: "POST",
             })
         }
     </script>
