@@ -24,5 +24,6 @@ class UserProfileRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     lookup_field = 'uuid'
     # Don't use UserProfile.id
 
-class home():
+
+class Home:
     pass

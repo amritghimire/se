@@ -22,6 +22,6 @@ urlpatterns = [
         name='user'
     ),
     path(
-        '', userprofile_views.home, name='main'
+        '', userprofile_views.Home, name='main'
     )
 ]
