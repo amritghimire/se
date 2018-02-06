@@ -1,0 +1,42 @@
+{% extends 'bridge/base.html' %}
+{% load account %}
+
+{% block content %}
+    <script
+            src="//code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <div id="demo">
+    </div>
+        <h2>The XMLHttpRequest Object</h2>
+
+        <button type="button"
+                onclick="call_ajax()">Change Content
+        </button>
+    </div>
+
+    <script>
+        function call_ajax() {
+            let url = $('input[name=apiStarter]').val();
+            url = url + "user?format=json";
+            loadDoc(url)
+        }
+
+        function loadDoc(url) {
+            csrftoken = $('input[name=csrfmiddlewaretoken]').val();
+            console.log(csrftoken);
+            console.log(url);
+            $.ajax({
+                url: url,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+        }
+    </script>
+    {% csrf_token %}
+    <input type="hidden" name="apiStarter" value="{% url 'api:main' %}">
+{% endblock %}
