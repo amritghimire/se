@@ -1,10 +1,9 @@
 from django.contrib.auth import login
 from django.contrib.auth.models import AnonymousUser
 from rest_framework import status
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.compat import authenticate
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.generics import (
+    CreateAPIView,
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView
 )
@@ -32,6 +31,80 @@ class UserProfileRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = UserProfileSerializer
     lookup_field = 'uuid'
     # Don't use UserProfile.id
+
+
+class SignUp(CreateAPIView):
+    """
+    It enables implements creating and saving a new user profile.
+    If a profile is created this returns a 201 Created response,
+    with a serialized representation of the profile as the body of the response.
+    If the request data provided for creating the object was invalid, a 400 Bad Request
+     response will be returned, with the error details as the body of the response.
+     Sample Input 1:
+        {
+            "dob": "14-06-1997",
+            "about": "Check",
+            "address": "Pokhara",
+            "gender": "M",
+            "website": "http://amritghimire.com",
+            "profile_picture": null,
+            "email": "iamritghimire+98@gmail.com",
+            "first_name": "Amrit",
+            "last_name": "Ghimire",
+            "username": "amrit"
+        }
+     Sample Response1:
+        HTTP 400 Bad Request
+        Allow: POST, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "dob": [
+                "Date has wrong format. Use one of these formats instead: YYYY[-MM[-DD]]."
+            ],
+            "username": [
+                "A user with that username already exists."
+            ]
+        }
+
+     Sample Input 2:
+        {
+            "dob": null,
+            "uuid": "b8175196-553e-4c46-8f94-7f52398d2e2b",
+            "about": "Check",
+            "address": "Pokhara",
+            "gender": "M",
+            "website": "http://amritghimire.com",
+            "profile_picture": null,
+            "email": "iamritghimire+98@gmail.com",
+            "first_name": "Amrit",
+            "last_name": "Ghimire",
+            "username": "amritghi"
+        }
+
+     Sample Response 2:
+        HTTP 201 Created
+        Allow: POST, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "dob": null,
+            "uuid": "b8175196-553e-4c46-8f94-7f52398d2e2b",
+            "about": "Check",
+            "address": "Pokhara",
+            "gender": "M",
+            "website": "http://amritghimire.com",
+            "profile_picture": null,
+            "email": "iamritghimire+98@gmail.com",
+            "first_name": "Amrit",
+            "last_name": "Ghimire",
+            "username": "amritghi"
+        }
+    """
+    serializer_class = UserProfileSerializer
+    permission_classes = (AllowAny,)
 
 
 class Login(APIView):
@@ -70,11 +143,11 @@ class Login(APIView):
                 request.session.set_expiry(0)
             return Response(UserProfileSerializer(user).data)
         else:
-            error={"error":"Please check your login info again."}
+            error = {"error": "Please check your login info again."}
             if not UserProfile.objects.filter(username=username).exists():
-                error['username']="The username is not registered yet.Try signing up?"
+                error['username'] = "The username is not registered yet.Try signing up?"
             else:
-                error['password']="That password doesn’t match. Check CAPS lock and Try again? "
+                error['password'] = "That password doesn’t match. Check CAPS lock and Try again? "
             return Response(error, status=status.HTTP_400_BAD_REQUEST)
 
 

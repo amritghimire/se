@@ -21,6 +21,12 @@ urlpatterns = [
         view=userprofile_views.Login.as_view(),
         name='login'
     ),
+    # {% url 'api:signup' %}
+    path(
+        r'signup',
+        view=userprofile_views.SignUp.as_view(),
+        name='signup'
+    ),
     # {% url 'api:UserProfiles' UserProfile.uuid %}
     path(
         r'user/<uuid>/',
