@@ -26,7 +26,7 @@
 * Make a [VirtualEnv] by ` virtualenv --python=python3 venv`
 * Activate _virtual environment_ by `source venv/bin/activate` or `venv\Scripts\activate`
 * Then, install all dependencies with `pip3 install -r requirements.txt`.
-* You are good to go now.
+* You are good to go now. 
 
 ### How to run
 
