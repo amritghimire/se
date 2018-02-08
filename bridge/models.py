@@ -22,7 +22,7 @@ class Description(models.Model):
     def __str__(self):
         return self.description_text
 class Id(models.Model):
-    id_is = models.IntegerField(help_text="Enter your id")
+    id_detail = models.IntegerField(help_text="Enter your id")
 
 class Image_for_detail(models.Model):
     image = models.ImageField()
