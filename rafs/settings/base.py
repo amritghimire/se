@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'rafs',
     'userProfile',
     'bridge',
+    'category',
     'crispy_forms',
     'django.contrib.sites',
     'allauth',
