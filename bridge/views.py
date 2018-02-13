@@ -7,7 +7,7 @@ from os.path import isfile, join
 
 
 def index(request):
-    render(request, 'bridge/index.html')
+    return render(request, 'bridge/index.html')
 
 
 def home(request):
