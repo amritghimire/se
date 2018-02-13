@@ -1,0 +1,20 @@
+{% extends 'bridge/base.html' %}
+{% load static from staticfiles %}
+{% block head %}
+    {#    Add css file to staticfiles/css folder and import them as below: #}
+    {#    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">  #}
+{% endblock %}
+
+{% block content %}
+
+    ADD MAIN CONTENT HERE
+    MODIFY BASE.html IF COMMON TO BE ADDED.
+
+{% endblock %}
+
+{% block end %}
+    {#    Add js file to staticfiles/js folder and import them as below: #}
+    {#    <script src="{% static "js/index.js" %}"></script> #}
+{#Webpack bundled from index.js is automatically added.#}
+
+{% endblock %}

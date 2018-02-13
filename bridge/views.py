@@ -6,6 +6,10 @@ from django.shortcuts import render
 from os.path import isfile, join
 
 
+def index(request):
+    render(request, 'bridge/index.html')
+
+
 def home(request):
     directory_to_scan = os.path.join(settings.BASE_DIR, "templates", "bridge")
     onlyfiles = [f for f in os.listdir(directory_to_scan) if isfile(join(directory_to_scan, f))]

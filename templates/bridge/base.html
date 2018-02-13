@@ -1,4 +1,6 @@
 {% load static from staticfiles %}
+{% load render_bundle from webpack_loader %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,9 @@
     <title>{% block title %}  {% endblock %}</title>
     <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
     <link rel="stylesheet" href="{% static "css/index.css" %}">
+            {% render_bundle 'main' 'css' %}
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
 <div class="container">
@@ -13,5 +18,8 @@
 
     {% endblock %}
 </div>
+{% render_bundle 'main' 'js' %}
+{% block end %}
+{% endblock %}
 </body>
 </html>
