@@ -14,4 +14,7 @@ class UserProfile(AbstractUser):
     address = models.CharField(max_length=255, null=True, blank=True)
     gender = models.CharField(max_length=2)
     website = models.URLField(null=True, blank=True)
-    profile_picture = models.ImageField(upload_to="image/profile/",null=True)
+    profile_picture = models.ImageField(upload_to="image/profile/", null=True)
+
+    def __str__(self):
+        return self.first_name + " "+self.last_name
