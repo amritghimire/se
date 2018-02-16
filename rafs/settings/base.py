@@ -45,7 +45,7 @@ def get_secret(setting, secrets=secrets):
 
 # Application definition
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_REDIRECT_URL = 'bridge:index'
+LOGIN_REDIRECT_URL = 'bridge:home'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -176,7 +176,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = LOGIN_REDIRECT_URL
 AUTH_USER_MODEL = 'userProfile.UserProfile'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES'
     : (
@@ -193,3 +195,4 @@ EMAIL_HOST_PASSWORD = 'sevenseven'
 EMAIL_PORT = 465
 DEFAULT_FROM_EMAIL = 'Amrit Ghimire <rafs@amritghimire.com>'
 SOCIAL_AUTH_SESSION_EXPIRATION = False
+ACCOUNT_SIGNUP_FORM_CLASS = 'userProfile.form.SignUpForm'

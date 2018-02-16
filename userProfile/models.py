@@ -4,6 +4,11 @@ import uuid as uuid_lib
 
 
 class UserProfile(AbstractUser):
+    GENDER = (
+        ('M', "Male"),
+        ('F', "Female"),
+        ('U', "Unspecified")
+    )
     dob = models.DateField(null=True, blank=True)
     uuid = models.UUIDField(  # Used by the API to look up the record
         db_index=True,
@@ -12,9 +17,9 @@ class UserProfile(AbstractUser):
     )
     about = models.TextField(null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
-    gender = models.CharField(max_length=2)
+    gender = models.CharField(max_length=2, choices=GENDER)
     website = models.URLField(null=True, blank=True)
     profile_picture = models.ImageField(upload_to="image/profile/", null=True)
 
     def __str__(self):
-        return self.first_name + " "+self.last_name
+        return self.first_name + " " + self.last_name
