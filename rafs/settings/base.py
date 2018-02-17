@@ -199,7 +199,7 @@ EMAIL_HOST = 'smtp.yandex.com'
 EMAIL_HOST_USER = 'rafs@amritghimire.com'
 EMAIL_HOST_PASSWORD = 'sevenseven'
 EMAIL_PORT = 465
-DEFAULT_FROM_EMAIL = 'Amrit Ghimire <rafs@amritghimire.com>'
+DEFAULT_FROM_EMAIL = 'RAFS <rafs@amritghimire.com>'
 SOCIAL_AUTH_SESSION_EXPIRATION = False
 ACCOUNT_SIGNUP_FORM_CLASS = 'userProfile.form.SignUpForm'
 

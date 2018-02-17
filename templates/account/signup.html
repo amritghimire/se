@@ -1,22 +1,33 @@
-{% extends "account/base.html" %}
+{% extends "bridge/base.html" %}
 {% load crispy_forms_tags %}
-
+{% load static from staticfiles %}
+{% block head %}
+    {#    Add css file to staticfiles/css folder and import them as below: #}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+{% endblock %}
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+    <form class="signup modal-content" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        <div class="container">
+            <h1>Sign Up</h1>
+            <p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
+            <hr>
+            {% csrf_token %}
+            {{ form | crispy }}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+            <div class="clearfix">
+                <button type="button" id="clbtn" class="cancelbtn2">Cancel</button>
+                <button type="submit" class="signupbtn">Sign Up</button>
+            </div>
+        </div>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form | crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit" class="form-control">{% trans "Sign Up" %} &raquo;</button>
-</form>
+    </form>
 
 {% endblock %}
