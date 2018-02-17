@@ -1,11 +1,48 @@
-{% load static %}
+{% extends 'bridge/base.html' %}
+{% load static from staticfiles %}
+{% block head %}
+    {#    Add css file to staticfiles/css folder and import them as below: #}
+    <link rel="stylesheet" href="{%static "css/style.css" %}"> 
+{% endblock %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log In</title>
+  </head>
+    
+    <body>
+        <span class="close" title="Close" id="shut">&times;</span>
+        <form class="modal-content" action="/action_page.php">
+            <div class="container">
+                <h1>Log In</h1>
+                <p>Do not have an account?<a href="/template/signup.html"> Create new account</a>.</p>
+                <hr>
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+                <button type="submit">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+            <div class="container">
+                <button type="button" id="cbt" class="cancelbtn1">Cancel</button>
+                <span class="psw">Forgot <a href="give location">password?</a></span>
+            </div>
+        </form>
+    </body>
 </html>
+
+
+{% endblock %}
+
+{% block end %}
+    {#    Add js file to staticfiles/js folder and import them as below: #}
+        <script src="{% static "js/func.js" %}"></script> 
+{#Webpack bundled from index.js is automatically added.#}
+
+{% endblock %}
