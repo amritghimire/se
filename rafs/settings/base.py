@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'storages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'webpack_loader',
@@ -171,6 +172,9 @@ WEBPACK_LOADER = {
     }
 }
 
+# FOr authentication
+
+
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -188,6 +192,8 @@ REST_FRAMEWORK = {
 
 SESSION_COOKIE_AGE = 60 * 60 * 30 * 24
 
+# For mail setup
+
 EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.yandex.com'
 EMAIL_HOST_USER = 'rafs@amritghimire.com'
@@ -196,3 +202,13 @@ EMAIL_PORT = 465
 DEFAULT_FROM_EMAIL = 'Amrit Ghimire <rafs@amritghimire.com>'
 SOCIAL_AUTH_SESSION_EXPIRATION = False
 ACCOUNT_SIGNUP_FORM_CLASS = 'userProfile.form.SignUpForm'
+
+# For media storage
+
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_ACCESS_KEY_ID = 'GOOG5VQ3UJIUYW2ID2WG'
+GS_SECRET_ACCESS_KEY = 'qyhKWhTnAjmxcMgCHWV81uNSede7hWaq2sbiRoss'
+GS_BUCKET_NAME = 'amrit'
+GS_PROJECT_ID = '625038496262'
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.join(os.path.join(BASE_DIR, "conf"), "RAFS-ff9ce6eb7995.json")
