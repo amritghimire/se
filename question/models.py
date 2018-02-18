@@ -1,6 +1,8 @@
 from django.db import models
 
 from category.models import Category
+from product.models import Product
+from tag.models import Tag
 from userProfile.models import UserProfile
 
 
@@ -21,9 +23,7 @@ class Question(models.Model):
     asked_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     summary = models.CharField(max_length=1024, null=True, blank=True)
     category = models.ManyToManyField(Category)
-    # TODO: add relation to tag
-    # tag=models.ManyToManyField(Tag)
-    # TODO: add relation to Product
-    # options = models.ManyToManyField(Product)
+    tag = models.ManyToManyField(Tag)
+    options = models.ManyToManyField(Product)
     upvoted_by = models.ManyToManyField(UserProfile)
     downvoted_by = models.ManyToManyField(UserProfile)
