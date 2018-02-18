@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'tag',
     'question',
     'product',
+    'rating',
     'crispy_forms',
     'django.contrib.sites',
     'allauth',
