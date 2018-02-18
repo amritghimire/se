@@ -3,5 +3,5 @@ from .models import Product
 
 
 @admin.register(Product)
-class CategoryModelAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'title', 'uuid')
+class ProductModelAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'title', 'uuid', 'owner')

@@ -2,6 +2,8 @@ from django.db import models
 import uuid as uuid_lib
 
 from category.models import Category
+from tag.models import Tag
+from userProfile.models import UserProfile
 
 
 class Product(models.Model):
@@ -25,9 +27,8 @@ class Product(models.Model):
         editable=False
     )
     category = models.ManyToManyField(Category)
-    # TODO: ManytoMany field tag
-    # tag = models.ManyToManyField(Tag)
+    tag = models.ManyToManyField(Tag)
     manufacturer = models.CharField(max_length=200, null=True, blank=True)
+    owner = models.ManyToManyField(UserProfile)
     release_date = models.DateField(null=True, blank=True)
     product_picture = models.ImageField(upload_to="image/product")
-
