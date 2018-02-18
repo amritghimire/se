@@ -14,10 +14,11 @@ class Tag(models.Model):
         uuid uuid?
     """
     name = models.CharField(max_length=200)
-    viewed = models.ManyToManyField(UserProfile)
+    viewed = models.ManyToManyField(UserProfile, related_name='viewed_tag')
     slug = models.SlugField()
     uuid = models.UUIDField(  # Used by the API to look up the record
         db_index=True,
         default=uuid_lib.uuid4,
         editable=False
     )
+    selected_by = models.ManyToManyField(UserProfile, related_name='selected_tag')

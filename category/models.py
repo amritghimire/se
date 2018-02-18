@@ -5,7 +5,7 @@ import uuid as uuid_lib
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=20, help_text="Enter name of category")
-    slug = models.CharField(max_length=200)
+    slug = models.SlugField()
     summary = models.CharField(max_length=200, help_text="Write Summary", null=True, blank=True)
     description = models.CharField(max_length=2000, help_text="Write Description", null=True, blank=True)
     image = models.ImageField(upload_to="image/category/", null=True, blank=True)

@@ -4,6 +4,7 @@ from category.models import Category
 from product.models import Product
 from tag.models import Tag
 from userProfile.models import UserProfile
+import uuid as uuid_lib
 
 
 class Question(models.Model):
@@ -25,5 +26,11 @@ class Question(models.Model):
     category = models.ManyToManyField(Category)
     tag = models.ManyToManyField(Tag)
     options = models.ManyToManyField(Product)
-    upvoted_by = models.ManyToManyField(UserProfile)
-    downvoted_by = models.ManyToManyField(UserProfile)
+    upvoted_by = models.ManyToManyField(UserProfile, related_name='upvoted')
+    downvoted_by = models.ManyToManyField(UserProfile, related_name='downvoted')
+    slug = models.SlugField()
+    uuid = models.UUIDField(  # Used by the API to look up the record
+        db_index=True,
+        default=uuid_lib.uuid4,
+        editable=False
+    )

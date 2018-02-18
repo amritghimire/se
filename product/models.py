@@ -31,4 +31,5 @@ class Product(models.Model):
     manufacturer = models.CharField(max_length=200, null=True, blank=True)
     owner = models.ManyToManyField(UserProfile)
     release_date = models.DateField(null=True, blank=True)
-    product_picture = models.ImageField(upload_to="image/product")
+    product_picture = models.ImageField(upload_to="image/product", null=True, blank=True)
+    slug = models.SlugField()
