@@ -1,0 +1,55 @@
+.aside-contents {
+    margin-top: 10px;
+    .box {
+        padding: 15px 20px;
+    }
+    .title {
+        color: $color-black;
+        font-size: 19px;
+        font-weight: 300;
+        &.small-title {
+            border-bottom: 1px solid $color-border;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 0;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+        }
+    }
+    .aside-header {
+        padding-bottom: 15px;
+    }
+    .recent-item {
+        margin: 20px 0;
+        .product-photo {
+            @include border-radius(50%);
+            height: 35px;
+            margin: 5px 10px 0 0;
+            width: 35px;
+        }
+        .product-data {
+            width: calc(100% - 45px);
+            .name {
+                color: $color-black;
+                font-weight: 500;
+                margin-bottom: 2px;
+            }
+            .description {
+                margin-bottom: 8px;
+            }
+            .read-more {
+                @include border-radius(4px);
+                background: $color-white;
+                border: 1px solid $color-border;
+                cursor: pointer;
+                outline: 0;
+                padding: 5px 10px;
+                text-transform: uppercase;
+                &:hover {
+                    color: $color-white;
+                    background: $color-border;
+                }
+            }
+        }
+    }
+}

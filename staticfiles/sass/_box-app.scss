@@ -1,0 +1,87 @@
+.product-container {
+    .title {
+        color: $color-black;
+        font-size: 19px;
+        font-weight: 500;
+    }
+    .product-header {
+        border-bottom: 1px solid $color-border;
+        margin: 15px 20px;
+        padding-bottom: 15px;
+    }
+    .product-item {
+          @include box-sizing;
+        border-bottom: 1px solid $color-border;
+        padding: 15px 20px;
+        width: 100%;
+        &:nth-last-child(2) {
+            border-bottom: 0;
+        }
+        .product-image {
+            width: 80px;
+        }
+        .product-data {
+            margin-left: 25px;
+            width: calc(100% - 105px);
+            p {
+                font-size: 13px;
+                margin: 4px 0 0 0;
+            }
+        }
+        .buttons {
+            margin-top: 13px;
+            span {
+                  @include border-radius(4px);
+                  @include box-sizing;
+                border: 1px solid $color-border;
+                cursor: pointer;
+                display: inline-block;
+                margin-right: 4px;
+                padding: 4px 10px;
+                text-align: center;
+                width: auto;
+                &.comments {
+                    background: url(../images/comments.png) 6px 7px no-repeat #fff;
+                    padding-left: 25px;
+                }
+                &.votes {
+                    background: url(../images/votes.png) 0 2px no-repeat #fff;
+                    color: $color-black;
+                    padding-left: 20px;
+                }
+                &.category {
+                    background: $color-button;
+                    color: $color-black;
+                    float: right;
+                    font-size: 12px;
+                    padding: 5px 10px;
+                    text-transform: uppercase;
+                    width: auto;
+                    border: none;
+                }
+                &:hover {
+                    background: $color-white;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.show-more {
+    padding: 10px 0;
+    text-align: center;
+    text-transform: uppercase;
+    .arrow {
+        display: inline-block;
+        height: 10px;
+        margin-right: 6px;
+    }
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+
+
+}

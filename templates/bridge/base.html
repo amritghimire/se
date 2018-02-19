@@ -8,16 +8,37 @@
     <title>{% block title %}  {% endblock %}</title>
     <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
     <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" href="{% static "css/design.css" %}">
             {% render_bundle 'main' 'css' %}
     {% block head %}
     {% endblock %}
 </head>
 <body>
-<div class="container">
+	 <header class="header">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Recommendations</a>
+            <a href="#">Feedbacks</a>
+            <input type="text" placeholder="search for products" class="search">
+            <input type="checkbox" id="dropdown" class="checkbox">
+            <label for="dropdown" class="label">
+                    <img src="/images/user.png" class="user-img" alt="">
+            </label>
+            <div class="nav-list">
+                    <a href="#">Profile</a>
+                    <a href="#">Setting</a>
+                    <a href="#">Help</a>
+                    <a href="#">Signout</a>
+            </div>
+        </nav>
+        
+    </header>
+    
+    <section class="main-content">
     {% block content %}
 
     {% endblock %}
-</div>
+</section>
 {% render_bundle 'main' 'js' %}
 {% block end %}
 {% endblock %}

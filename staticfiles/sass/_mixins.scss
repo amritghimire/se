@@ -1,0 +1,27 @@
+@mixin border-radius ($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+  }
+  
+  @mixin box-sizing () {
+    -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+  }
+  
+  @mixin transition ($seconds) {
+    -webkit-transition: all $seconds linear;
+       -moz-transition: all $seconds linear;
+        -ms-transition: all $seconds linear;
+            transition: all $seconds linear;
+  }
+
+@mixin box-content ($width) {
+  @include box-sizing;
+  background: $color-white;
+  border: 1px solid $color-border;
+  margin: 0 0 30px;
+  width: $width;
+}

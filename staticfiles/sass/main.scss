@@ -1,0 +1,135 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+// $color-primary: #2D303A;
+$color-background2: #F2F2F2;
+$color-background: #10263B;
+$color-black : #000;
+$color-border2 : #f2f2f2;
+$color-border : #1F364D;
+$color-primary :#da552f;
+$color-secondary: #008ACC;
+$color-button: #f9f9f9;
+// $color-text : #999;
+$color-text : #B0B8C0;
+$color-white : #fff;
+
+$width-wrapper:    1070px;
+
+@import 'mixins';
+@import 'header';
+@import 'box-app';
+@import 'right-box';
+
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;  
+}
+
+body {
+    background: $color-background;
+    color: $color-text;
+    font-family: 'Roboto';
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+  
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    padding-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+a {
+    margin: 1rem;
+    color: $color-text;
+    font-size: 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+        color: $color-secondary;
+    }
+}
+
+h1 {
+    position: absolute;
+    font-size: 3rem;
+    text-align: left;
+    text-transform: uppercase;
+    color: $color-white;
+    span {
+        color: $color-secondary;
+    }
+}
+
+.clearfix {
+    clear: both;
+}
+
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.product-container {
+    padding: 3rem 4rem 5rem 8rem;
+}
+.main-content {
+    margin: 30px auto;
+    width: $width-wrapper;
+  
+    .left-section {
+      float: left;
+      width: 74%;
+    }
+  
+    .right-section {
+      float: right;
+      width: 24.5%;
+    }
+  
+    .box {
+      @include box-content(100%);
+  
+      strong {
+        color: $color-black;
+        display: inline-block;
+        font-weight: 500;
+        margin: 0 5px;
+      }
+    }
+  
+    //   img {
+    //     height: 14px;
+    //   }
+    }
+
+  
