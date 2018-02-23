@@ -2,6 +2,7 @@ from django.db import models
 import uuid as uuid_lib
 
 from category.models import Category
+# from recommendation.models import Recommendation
 from tag.models import Tag
 from userProfile.models import UserProfile
 
@@ -26,10 +27,14 @@ class Product(models.Model):
         default=uuid_lib.uuid4,
         editable=False
     )
-    category = models.ManyToManyField(Category)
-    tag = models.ManyToManyField(Tag)
+    category = models.ManyToManyField(Category, blank=True)
+    tag = models.ManyToManyField(Tag, blank=True)
+    summary = models.TextField(null=True, blank=True)
     manufacturer = models.CharField(max_length=200, null=True, blank=True)
-    owner = models.ManyToManyField(UserProfile)
+    owner = models.ManyToManyField(UserProfile, blank=True)
     release_date = models.DateField(null=True, blank=True)
     product_picture = models.ImageField(upload_to="image/product", null=True, blank=True)
     slug = models.SlugField()
+
+    def __str__(self):
+        return self.title

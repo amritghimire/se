@@ -5,7 +5,7 @@ from product.models import Product
 from userProfile.models import UserProfile
 
 
-class Recommendation(models.Model):
+class Recommended(models.Model):
     """
     recommendation
         --------
@@ -14,6 +14,25 @@ class Recommendation(models.Model):
         author int FK >-< userProfile.id
         product int FK -< product.id
     """
-    recommended = models.BooleanField()
     author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s recommended by %s" % (self.product, self.author)
+
+
+class NotRecommended(models.Model):
+    """
+    recommendation
+        --------
+        id int PK AUTOINCREMENT
+        recommended boolean
+        author int FK >-< userProfile.id
+        product int FK -< product.id
+    """
+    author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s not recommended by %s" % (self.product, self.author)
+

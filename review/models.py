@@ -22,3 +22,6 @@ class Review(models.Model):
         default=uuid_lib.uuid4,
         editable=False
     )
+
+    def __str__(self):
+        return "Review of %s on %s" % (self.author, self.product)
