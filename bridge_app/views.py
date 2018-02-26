@@ -1,23 +1,18 @@
 import os
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
-from django.db.models import Count
 from django.shortcuts import render
 from os.path import isfile, join
-
-from product_app.models import Product
-from userProfile_app.models import UserProfile
+from relationship_app.models import Relationship
 
 
-@login_required()
 def index(request):
-    user = request.user  # type: UserProfile
-    selected_category = [a.uuid for a in user.selected_category.all()]
-    recommended_objects = Product.objects.annotate(
-        recommended_count=Count('recommended')/2).order_by('-recommended_count').filter(
-        category__in=user.selected_category.all()).distinct()
+    if request.user.is_authenticated:
+        recommended_objects = [a.product for a in
+                               Relationship.objects.filter(author=request.user).order_by('-score')[:5]]
+    else:
+        recommended_objects = [a.product for a in Relationship.objects.all()[:5]]
+
     context = {
-        'user': user,
         'recommended_objects': recommended_objects
     }
 

@@ -1,5 +1,6 @@
 {% extends 'bridge_app/base.html' %}
 {% load static from staticfiles %}
+{% load filter_objects %}
 {% block head %}
     {#    Add css file to staticfiles/css folder and import them as below: #}
     {#    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">  #}
@@ -30,8 +31,8 @@
                             {{ object.summary }}
                         </p>
                         <div class="buttons">
-                            <span class="votes">Recommended by: {{ object.recommended_count }}</span>
-                            <span class="comments">{{ object.review_set.count }}</span>
+                            <span class="votes">Recommended by: {{ object.recommended_set.count }}</span>
+                            <span class="comments">{{ object|display_review_count }}</span>
 
                         </div>
                     </div>
