@@ -45,7 +45,7 @@ def get_secret(setting, secrets=secrets):
 
 # Application definition
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_REDIRECT_URL = 'bridge:home'
+LOGIN_REDIRECT_URL = 'bridge_app:home'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,14 +58,14 @@ INSTALLED_APPS = [
     'webpack_loader',
     'rest_framework',
     'rafs',
-    'userProfile',
-    'bridge',
-    'category',
+    'userProfile_app',
+    'bridge_app',
+    'category_app',
     'tag',
-    'question',
-    'product',
+    'question_app',
+    'product_app',
     'relationship_app',
-    'recommendation',
+    'recommendation_app',
     'crispy_forms',
     'django.contrib.sites',
     'allauth',
@@ -184,7 +184,7 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = LOGIN_REDIRECT_URL
-AUTH_USER_MODEL = 'userProfile.UserProfile'
+AUTH_USER_MODEL = 'userProfile_app.UserProfile'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
@@ -206,7 +206,7 @@ EMAIL_HOST_PASSWORD = 'sevenseven'
 EMAIL_PORT = 465
 DEFAULT_FROM_EMAIL = 'RAFS <rafs@amritghimire.com>'
 SOCIAL_AUTH_SESSION_EXPIRATION = False
-ACCOUNT_SIGNUP_FORM_CLASS = 'userProfile.form.SignUpForm'
+ACCOUNT_SIGNUP_FORM_CLASS = 'userProfile_app.form.SignUpForm'
 
 # For media storage
 

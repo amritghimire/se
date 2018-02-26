@@ -1,7 +1,7 @@
 from django.db import models
 import uuid as uuid_lib
-from product.models import Product
-from userProfile.models import UserProfile
+from product_app.models import Product
+from userProfile_app.models import UserProfile
 
 
 class Relationship(models.Model):

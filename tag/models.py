@@ -1,7 +1,7 @@
 from django.db import models
 import uuid as uuid_lib
 
-from userProfile.models import UserProfile
+from userProfile_app.models import UserProfile
 
 
 class Tag(models.Model):

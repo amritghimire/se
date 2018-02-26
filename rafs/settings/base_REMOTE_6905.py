@@ -43,7 +43,7 @@ def get_secret(setting, secrets=secrets):
 
 # Application definition
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_REDIRECT_URL = 'bridge:index'
+LOGIN_REDIRECT_URL = 'bridge_app:index'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
