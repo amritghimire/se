@@ -31,7 +31,7 @@
                             {{ object.summary }}
                         </p>
                         <div class="buttons">
-                            <span class="votes">Recommended by: {{ object.recommended_set.count }}</span>
+                            <span class="votes">Recommended by: {{ object|display_recommend_count }}</span>
                             <span class="comments">{{ object|display_review_count }}</span>
 
                         </div>
