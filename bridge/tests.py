@@ -12,4 +12,4 @@ class FetchTest(unittest.TestCase):
         response = self.client.get('/')
 
         # Check that the response is 200 OK.
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 301)
