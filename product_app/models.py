@@ -35,6 +35,16 @@ class Product(models.Model):
     release_date = models.DateField(null=True, blank=True)
     product_picture = models.ImageField(upload_to="image/product", null=True, blank=True)
     slug = models.SlugField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        from relationship_app.models import Relationship
+
+        super().save(force_insert, force_update, using, update_fields)
+        for user in UserProfile.objects.all():
+            relationship = Relationship(author=user, product=self, review=None)
+            relationship.save()

@@ -165,7 +165,8 @@
 
 body {
   background: #10263B;
-  font-family: 'Roboto';
+    color: #fffccf;
+    font-family: 'Roboto', serif;
   font-size: 14px;
   font-weight: 400;
   margin: 0;
@@ -197,14 +198,6 @@ a {
   a:hover {
     color: #008ACC; }
 
-h1 {
-  position: absolute;
-  font-size: 3rem;
-  text-align: left;
-  text-transform: uppercase;
-  color: #fff; }
-  h1 span {
-    color: #008ACC; }
 
 .clearfix {
   clear: both; }
@@ -235,6 +228,7 @@ h1 {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     background: #fff;
+      color: #000;
     border: 1px solid #1F364D;
     margin: 0 0 30px;
     width: 100%; }

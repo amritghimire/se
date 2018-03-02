@@ -1,0 +1,26 @@
+{% extends 'bridge_app/base.html' %}
+
+{% block title %}
+    Select TAG
+{% endblock %}
+{% block head %}
+        {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <h1>UNDER CONSTRUCTION</h1>
+    <h1>YOU WILL BE ABLE TO SELECT TAG HERE</h1>
+    <ul class="list-group">
+        {% for tag in tags %}
+            <li class="list-group-item active">
+                {{ tag.name }}
+            </li>
+
+        {% endfor %}
+    </ul>
+    <form action="{% url 'tag:add' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'product_app',
     'relationship_app',
     'crispy_forms',
+    'ajax_select',
     'django.contrib.sites',
     'allauth',
     'allauth.account',

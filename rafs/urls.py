@@ -16,11 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from ajax_select import urls as ajax_select_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', auth_views.login, name='login'),
+    path('ajax_select/', include(ajax_select_urls)),
     path('accounts/', include('allauth.urls')),
     path('api/v1/', include('bridge_app.apiv1_urls', namespace='api')),
+    path('category/', include('category_app.urls', namespace="category_app")),
+    path('tag/', include('tag.urls', namespace="tag")),
     path('', include('bridge_app.urls', namespace="bridge_app")),
 ]

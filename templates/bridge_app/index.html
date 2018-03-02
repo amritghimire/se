@@ -21,7 +21,7 @@
                     <div class="fleft product-data">
                         <span class="title"> {{ object.title }}</span>
 
-                            <span class="category">
+                        <span class="category">
                             {% for category in object.category.all %}
                                 <a href="#">{{ category }}</a>
                             {% endfor %}
@@ -47,54 +47,23 @@
 
         <article id="today" class="box product-container">
             <header class="product-header">
-                <span class="title">Today</span>
+                <span class="title">Some questions</span>
             </header>
-
-            <div class="product-item">
-                <img src="{% static "images/today/app-1.png" %}" alt="" class="fleft product-image">
-                <div class="fleft product-data">
-                    <span class="title">Lorem epsum</span>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore hic dignissimos pariatur omnis
-                        iusto ratione consequuntur eaque amet. Obcaecati ab corporis dolorem asperiores incidunt
-                        laudantium commodi expedita, cum ipsa nostrum.</p>
-                    <div class="buttons">
-                        <span class="votes">Recommended By:82</span>
-                        <span class="comments">8</span>
-                        <span class="category">Android</span>
+            {% for question in recommended_questions %}
+                <div class="product-item">
+                    <img src="{% static "images/today/app-1.png" %}" alt="" class="fleft product-image">
+                    <div class="fleft product-data">
+                        <span class="title">{{ question.title }}</span>
+                        <p>{{ question.summary |default_if_none:" " }}</p>
+                        <div class="buttons">
+                            {% for option in question.options.all %}
+                                <span class="votes">{{ option }}</span>
+                            {% endfor %}
+                        </div>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </div>
-
-
-            <div class="product-item">
-                <img src="{% static "images/today/item-3.jpg" %}" alt="" class="fleft product-image">
-                <div class="fleft product-data">
-                    <span class="title">Zero to one</span>
-                    <p>Zero to One: Notes on Startups, or How to Build the Future</p>
-                    <div class="buttons">
-                        <span class="votes">Recommended By: 23</span>
-                        <span class="comments">3</span>
-
-                        <span class="category">book</span>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="product-item">
-                <img src="{% static "images/today/item-3.jpg" %}" alt="" class="fleft product-image">
-                <div class="fleft product-data">
-                    <span class="title">Zero to one</span>
-                    <p>Zero to One: Notes on Startups, or How to Build the Future</p>
-                    <div class="buttons">
-                        <span class="votes">Recommended By:23</span>
-                        <span class="comments">3</span>
-
-                        <span class="category">book</span>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            {% endfor %}
 
             <div class="show-more">
                 <img src="{% static "images/arrow-down.png" %}" alt="" class="arrow">Show More
@@ -107,67 +76,19 @@
             <header class="aside-header">
                 <div class="title small-title">Recently added</div>
             </header>
-
-            <div class="recent-item">
-                <div class="fleft">
-                    <img src="{% static "images/product.png" %}" alt="product picture" class="product-photo">
-                </div>
-                <div class="fleft product-data">
-                    <div class="name">Trello</div>
-                    <div class="description">Trello is a web-based project management application</div>
-                    <button class="read-more">Read More</button>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-
-            <div class="recent-item">
-                <div class="fleft">
-                    <img src="{% static "images/product.png" %}" alt="product picture" class="product-photo">
-                </div>
-                <div class="fleft product-data">
-                    <div class="name">Arch linux</div>
-                    <div class="description">Arch Linux is a Linux distribution for computers based on x86-64
-                        architectures.
+            {% for product in recently_added %}
+                <div class="recent-item">
+                    <div class="fleft">
+                        <img src="{% static "images/product.png" %}" alt="product picture" class="product-photo">
                     </div>
-                    <button class="read-more">Read More</button>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="recent-item">
-                <div class="fleft">
-                    <img src="{% static "images/product.png" %}" alt="product picture" class="product-photo">
-                </div>
-                <div class="fleft product-data">
-                    <div class="name">Slack</div>
-                    <div class="description">Slack is a cloud-based set of proprietary team collaboration tools and
-                        services, founded by Stewart Butterfield.
+                    <div class="fleft product-data">
+                        <div class="name">{{ product.title }}</div>
+                        <div class="description">{{ product.summary }}</div>
+                        <button class="read-more">Read More</button>
                     </div>
-                    <button class="read-more">Read More</button>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="recent-item">
-                <div class="fleft">
-                    <img src="{% static "images/product.png" %}" alt="product picture" class="product-photo">
-                </div>
-                <div class="fleft product-data">
-                    <div class="name">Logitech G502 Proteus Spectrum</div>
-                    <div class="description">RGB TUNABLE GAMING MOUSE</div>
-                    <button class="read-more">Read More</button>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="recent-item">
-                <div class="fleft">
-                    <img src="{% static "images/product.png" %}" alt="product picture" class="product-photo">
-                </div>
-                <div class="fleft product-data">
-                    <div class="name">Fitbit Charge 2</div>
-                    <div class="description">Fitbit charge 2 is a watch from fitbit.</div>
-                    <button class="read-more">Read More</button>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            {% endfor %}
         </article>
     </section>
 

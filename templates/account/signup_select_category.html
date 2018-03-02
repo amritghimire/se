@@ -1,0 +1,27 @@
+{% extends 'bridge_app/base.html' %}
+
+{% block title %}
+    Select Category
+{% endblock %}
+{% block head %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+    <h1>UNDER CONSTRUCTION</h1>
+    <h1>YOU WILL BE ABLE TO SELECT CATEGORY HERE</h1>
+    SELECTED CATEGORIES ARE:
+    <ul class="list-group">
+        {% for category in categories %}
+            <li class="list-group-item active">
+                {{ category.name }}
+            </li>
+
+        {% endfor %}
+    </ul>
+    <form action="{% url 'category_app:add' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit"/>
+    </form>
+{% endblock %}
