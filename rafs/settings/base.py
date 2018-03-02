@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'ajax_select',
     'django.contrib.sites',
+    'django_seed',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
