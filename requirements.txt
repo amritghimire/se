@@ -44,5 +44,5 @@ requests-oauthlib==0.8.0
 rsa==3.4.2
 six==1.11.0
 text-unidecode==1.2
-urllib3==1.22
+urllib3==1.24.2
 whitenoise==3.3.1
